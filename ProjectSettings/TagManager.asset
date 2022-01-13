@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - killzone
+  - ball
   layers:
   - Default
   - TransparentFX
@@ -40,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 625433411
+    locked: 0
+  - name: MidGround
+    uniqueID: 3832988765
+    locked: 0
+  - name: ForeGround
+    uniqueID: 1650388869
     locked: 0
