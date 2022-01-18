@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Brick : MonoBehaviour
 {
     #region Properties
     [SerializeField] int hitPoints = 2;
+   
     private int HitPoints
     {
         get { return hitPoints; }
@@ -22,7 +24,10 @@ public class Brick : MonoBehaviour
     #endregion
 
     #region Fields
+    [SerializeField] AudioClip hitFX;
+    [SerializeField] GameObject powCanvas;
     [SerializeField] Sprite damageSprite;
+    [SerializeField] Sprite hitEffectImage;
     SpriteRenderer spriteRenderer;
     #endregion
 
@@ -51,7 +56,15 @@ public class Brick : MonoBehaviour
         //decrement hitPoints
         HitPoints--;
         spriteRenderer.sprite = damageSprite;
+        ShowPowEffect();
+        AudioSource.PlayClipAtPoint(hitFX,transform.position);
+    }
 
-    } 
+    private void ShowPowEffect()
+    {
+        var powGo = Instantiate(powCanvas, transform.position, Quaternion.identity,transform);
+        powGo.GetComponentInChildren<Image>().sprite = hitEffectImage;
+        Destroy(powGo.gameObject, .2f);
+    }
     #endregion
 }
